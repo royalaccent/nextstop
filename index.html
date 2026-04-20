@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NextStop — Book Cheap Flights, Hotels & Holidays | Powered by Royal Accent Creations</title>
+  <meta name="description" content="NextStop powered by Royal Accent Creations. Book cheap flights, hotels, holiday packages and get visa consultation services across Africa and the world."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="container">
+    <div class="top-bar-links">
+      <a href="#">List Your Property</a>
+      <a href="#">NextStop Biz Travel</a>
+      <a href="#">Manage My Bookings</a>
+    </div>
+    <div class="top-bar-right">
+      <span class="powered-by-top">Powered by Royal Accent Creations</span>
+      <a href="#">🇬🇭 GH | EN | GHS</a>
+      <a href="tel:+233244416725" style="color:var(--cyan);font-weight:600">☎ Support</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <nav class="navbar-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-main">
+        <div class="logo-mark">N</div>
+        <span class="logo-text">Next<span>Stop</span></span>
+      </div>
+      <span class="logo-tagline">Powered by <strong>Royal Accent Creations</strong></span>
+    </a>
+
+    <ul class="nav-links">
+      <li class="nav-item">
+        <button>Shop Travel ▾</button>
+        <div class="dropdown">
+          <a href="#">✈️ Flights</a>
+          <a href="#">🏨 Hotels &amp; Stays</a>
+          <a href="#">🚗 Airport Rides</a>
+          <a href="#">🌴 Holiday Packages</a>
+          <a href="#">🎫 Events</a>
+          <a href="#">💳 Travel Card</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="visa.html">🛂 Visa Services</a></li>
+      <li class="nav-item"><a href="#">List Property</a></li>
+      <li class="nav-item"><a href="#">Biz Travel</a></li>
+      <li class="nav-item"><a href="#">Travel Guide</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="#" class="btn btn-ghost">🛒 Cart</a>
+      <a href="#" class="btn btn-gold">Login / Sign Up</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+  <div class="mobile-nav-panel">
+    <button class="mobile-nav-close" id="mobileNavClose">✕</button>
+    <a href="index.html"><strong>Next<span style="color:var(--cyan)">Stop</span></strong></a>
+    <div class="mobile-divider"></div>
+    <a href="#">✈️ Flights</a>
+    <a href="#">🏨 Hotels &amp; Stays</a>
+    <a href="#">🚗 Airport Rides</a>
+    <a href="#">🌴 Holiday Packages</a>
+    <a href="#">🎫 Events</a>
+    <a href="#">💳 Travel Card</a>
+    <div class="mobile-divider"></div>
+    <a href="visa.html">🛂 Visa Services</a>
+    <a href="#">List Property</a>
+    <a href="#">Biz Travel</a>
+    <a href="#">Travel Guide</a>
+    <div class="mobile-divider"></div>
+    <a href="#" style="color:var(--cyan);font-weight:700">Login / Sign Up</a>
+  </div>
+</div>
+
+<!-- HERO + SEARCH -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Your <span>Next Adventure</span><br/>Starts Here</h1>
+    <p>Search and book cheap flights, hotels, rides &amp; holiday packages across Africa and beyond.</p>
+    <p class="hero-sub">✦ Powered by Royal Accent Creations ✦</p>
+  </div>
+
+  <div class="search-card container" style="position:relative">
+    <!-- Tabs -->
+    <div class="search-tabs">
+      <button class="search-tab active" data-panel="flight">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg>
+        Flight
+      </button>
+      <button class="search-tab" data-panel="stays">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Stays
+      </button>
+      <button class="search-tab" data-panel="rides">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 4v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        Rides
+      </button>
+      <button class="search-tab" data-panel="holidays">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Holidays <span class="new-badge">New</span>
+      </button>
+      <button class="search-tab" data-panel="events">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Events <span class="new-badge">New</span>
+      </button>
+      <button class="search-tab" data-panel="card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        Travel Card
+      </button>
+    </div>
+
+    <!-- FLIGHT PANEL -->
+    <div class="search-panel active" data-panel="flight">
+      <div class="trip-type-row">
+        <label class="trip-radio"><input type="radio" name="triptype" value="one"> One Way</label>
+        <label class="trip-radio"><input type="radio" name="triptype" value="round" checked> Round Trip</label>
+        <label class="trip-radio"><input type="radio" name="triptype" value="multi"> Multi City</label>
+        <select class="class-select">
+          <option>Economy</option><option>Business</option><option>First Class</option><option>Premium Economy</option>
+        </select>
+      </div>
+      <div class="search-fields" style="position:relative">
+        <div class="field-group" id="fromField">
+          <label>From</label>
+          <div class="field-val" id="fromCity">Select City</div>
+          <div class="field-sub">Departure city or airport</div>
+        </div>
+        <button class="swap-btn" id="swapBtn" title="Swap cities">⇄</button>
+        <div class="field-group" id="toField">
+          <label>To</label>
+          <div class="field-val" id="toCity">Select City</div>
+          <div class="field-sub">Arrival city or airport</div>
+        </div>
+        <div class="field-group" id="depDateField" style="position:relative">
+          <label>Departure</label>
+          <div class="field-val" id="depDate">20 Apr'26</div>
+          <div class="field-sub" id="depDay">Sunday</div>
+          <div class="date-panel" id="datePanel">
+            <div class="dp-header">
+              <h4 id="dpTitle">April 2026</h4>
+              <div class="dp-nav">
+                <button id="dpPrev">&#8249;</button>
+                <button id="dpNext">&#8250;</button>
+              </div>
+            </div>
+            <div class="dp-grid" id="dpGrid"></div>
+          </div>
+        </div>
+        <div class="field-group" id="retDateField">
+          <label>Return</label>
+          <div class="field-val" id="retDate">27 Apr'26</div>
+          <div class="field-sub" id="retDay">Sunday</div>
+        </div>
+        <div class="field-group" id="passengerField" style="position:relative">
+          <label>Passengers</label>
+          <div class="field-val" id="passengerCount">1 Passenger</div>
+          <div class="field-sub">Adults, children, infants</div>
+          <div class="date-panel" id="passengerPanel" style="display:none;min-width:260px">
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <div style="display:flex;align-items:center;justify-content:space-between">
+                <div><div style="font-weight:600;font-size:.9rem">Adults</div><div style="font-size:.74rem;color:var(--muted)">12+ years</div></div>
+                <div style="display:flex;align-items:center;gap:12px">
+                  <button class="pax-btn" data-type="adults" data-op="-">&#8722;</button>
+                  <span id="pax-adults" style="font-weight:700;font-size:1rem;min-width:16px;text-align:center">1</span>
+                  <button class="pax-btn" data-type="adults" data-op="+">+</button>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between">
+                <div><div style="font-weight:600;font-size:.9rem">Children</div><div style="font-size:.74rem;color:var(--muted)">2-11 years</div></div>
+                <div style="display:flex;align-items:center;gap:12px">
+                  <button class="pax-btn" data-type="children" data-op="-">&#8722;</button>
+                  <span id="pax-children" style="font-weight:700;font-size:1rem;min-width:16px;text-align:center">0</span>
+                  <button class="pax-btn" data-type="children" data-op="+">+</button>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between">
+                <div><div style="font-weight:600;font-size:.9rem">Infants</div><div style="font-size:.74rem;color:var(--muted)">Under 2 years</div></div>
+                <div style="display:flex;align-items:center;gap:12px">
+                  <button class="pax-btn" data-type="infants" data-op="-">&#8722;</button>
+                  <span id="pax-infants" style="font-weight:700;font-size:1rem;min-width:16px;text-align:center">0</span>
+                  <button class="pax-btn" data-type="infants" data-op="+">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="search-bottom">
+        <label class="flex-dates"><input type="checkbox"/> My dates are flexible (±3 days)</label>
+        <button class="search-btn" id="searchBtn">🔍 SEARCH FLIGHTS</button>
+      </div>
+    </div>
+
+    <!-- STAYS PANEL -->
+    <div class="search-panel" data-panel="stays">
+      <div class="hotel-fields">
+        <div class="field-group"><label>Destination</label><div class="field-val">Where are you going?</div><div class="field-sub">City, hotel or landmark</div></div>
+        <div class="field-group"><label>Check-in</label><div class="field-val">Select date</div><div class="field-sub">Add date</div></div>
+        <div class="field-group"><label>Check-out</label><div class="field-val">Select date</div><div class="field-sub">Add date</div></div>
+        <div class="field-group"><label>Guests &amp; Rooms</label><div class="field-val">2 Guests, 1 Room</div><div class="field-sub">Adults &amp; children</div></div>
+      </div>
+      <div class="search-bottom"><span></span><button class="search-btn">🔍 SEARCH HOTELS</button></div>
+    </div>
+
+    <!-- RIDES PANEL -->
+    <div class="search-panel" data-panel="rides">
+      <div class="hotel-fields">
+        <div class="field-group"><label>Pickup Location</label><div class="field-val">Enter pickup address</div><div class="field-sub">Airport, hotel or landmark</div></div>
+        <div class="field-group"><label>Dropoff Location</label><div class="field-val">Enter dropoff address</div><div class="field-sub">Destination address</div></div>
+        <div class="field-group"><label>Pickup Date</label><div class="field-val">Select date</div><div class="field-sub">Add date</div></div>
+        <div class="field-group"><label>Passengers</label><div class="field-val">1 Passenger</div><div class="field-sub">Number of riders</div></div>
+      </div>
+      <div class="search-bottom"><span></span><button class="search-btn">🔍 SEARCH RIDES</button></div>
+    </div>
+
+    <!-- HOLIDAYS PANEL -->
+    <div class="search-panel" data-panel="holidays">
+      <div class="hotel-fields">
+        <div class="field-group"><label>Destination</label><div class="field-val">Where to?</div><div class="field-sub">Country or city</div></div>
+        <div class="field-group"><label>Travel Date</label><div class="field-val">Select date</div><div class="field-sub">Departure</div></div>
+        <div class="field-group"><label>Duration</label><div class="field-val">7 Nights</div><div class="field-sub">How long?</div></div>
+        <div class="field-group"><label>Travelers</label><div class="field-val">2 Adults</div><div class="field-sub">Adults &amp; children</div></div>
+      </div>
+      <div class="search-bottom"><span></span><button class="search-btn">🔍 SEARCH PACKAGES</button></div>
+    </div>
+
+    <!-- EVENTS PANEL -->
+    <div class="search-panel" data-panel="events">
+      <div class="hotel-fields" style="grid-template-columns:1fr 1fr 1fr">
+        <div class="field-group"><label>Search Events</label><div class="field-val">Concert, festival, sport…</div><div class="field-sub">Find experiences worldwide</div></div>
+        <div class="field-group"><label>Location</label><div class="field-val">Any city</div><div class="field-sub">Where?</div></div>
+        <div class="field-group"><label>Date</label><div class="field-val">Any date</div><div class="field-sub">When?</div></div>
+      </div>
+      <div class="search-bottom"><span></span><button class="search-btn">🔍 SEARCH EVENTS</button></div>
+    </div>
+
+    <!-- TRAVEL CARD PANEL -->
+    <div class="search-panel" data-panel="card">
+      <div style="padding:28px;text-align:center">
+        <div style="font-size:2.4rem;margin-bottom:10px">💳</div>
+        <h3 style="margin-bottom:8px;color:var(--navy)">NextStop Travel Card</h3>
+        <p style="color:var(--muted);max-width:500px;margin:0 auto 20px;font-size:.9rem">Get a prepaid travel card loaded with your budget. Spend in any currency with zero foreign transaction fees.</p>
+        <a href="#" class="btn btn-gold" style="display:inline-flex">Get Your Travel Card →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES STRIP -->
+<div class="features-strip">
+  <div class="container">
+    <div class="feature-item">
+      <div class="feature-icon fi-gold">🌍</div>
+      <div><h4>Explore Africa with NextStop</h4><p>Unbeatable deals on flights across the continent</p></div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon fi-blue">💳</div>
+      <div><h4>Pay in Installments</h4><p>Lock in travel deals now, pay conveniently over time</p></div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon fi-green">🛂</div>
+      <div><h4>Visa Consultation</h4><p>Expert help for any country — <a href="visa.html" style="color:var(--navy);font-weight:600">Book from $50</a></p></div>
+    </div>
+  </div>
+</div>
+
+<!-- PROMO BANNERS -->
+<section class="promo-section">
+  <div class="container">
+    <div class="promo-grid">
+      <div class="promo-card">
+        <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&q=70&auto=format" alt="Africa to the World" loading="lazy"/>
+        <div class="promo-card-body">
+          <h3>From Africa to the World</h3>
+          <p>Fly RwandAir, Ethiopian Airlines &amp; more — amazing fares, every day.</p>
+          <a href="#" class="promo-btn">Book Now</a>
+        </div>
+      </div>
+      <div class="promo-stack">
+        <div class="promo-card">
+          <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=70&auto=format" alt="Paris" loading="lazy"/>
+          <div class="promo-card-body">
+            <h3>Paris from Accra 🗼</h3>
+            <p>From GH₵ 4,500 — Limited seats.</p>
+            <a href="#" class="promo-btn">Book Now</a>
+          </div>
+        </div>
+        <div class="promo-card">
+          <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=70&auto=format" alt="Dubai" loading="lazy"/>
+          <div class="promo-card-body">
+            <h3>Dubai Getaway 🏙️</h3>
+            <p>Flights + 5-star hotel from GH₵ 6,200.</p>
+            <a href="#" class="promo-btn">Book Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFERS -->
+<section class="offers-section">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Best Travel Deals</h2>
+        <p class="section-sub" style="margin-bottom:0">Handpicked offers updated daily</p>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+        <div class="offer-tabs">
+          <button class="offer-tab active" data-deals="flights">Flights</button>
+          <button class="offer-tab" data-deals="hotels">Hotels</button>
+          <button class="offer-tab" data-deals="packages">Packages</button>
+        </div>
+        <a href="#" class="view-all">View all →</a>
+      </div>
+    </div>
+
+    <div class="deals-grid deal-panel" data-deals="flights">
+      <div class="deal-card"><div class="deal-img"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=500&q=70&auto=format" alt="Dubai" loading="lazy"/><span class="deal-badge">Round Trip</span></div><div class="deal-body"><div class="deal-route"><strong>Accra</strong> → <strong>Dubai</strong></div><div class="deal-price">GH₵ 1,517 <span>/ person</span></div><div class="deal-installment">💳 Pay GH₵ 253/mo · 6 months</div><a href="#" class="deal-book">Book Now</a></div></div>
+      <div class="deal-card"><div class="deal-img"><img src="https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=500&q=70&auto=format" alt="London" loading="lazy"/><span class="deal-badge">Round Trip</span></div><div class="deal-body"><div class="deal-route"><strong>Accra</strong> → <strong>London</strong></div><div class="deal-price">GH₵ 4,250 <span>/ person</span></div><div class="deal-installment">💳 Pay GH₵ 708/mo · 6 months</div><a href="#" class="deal-book">Book Now</a></div></div>
+      <div class="deal-card"><div class="deal-img"><img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=500&q=70&auto=format" alt="Lagos" loading="lazy"/><span class="deal-badge">One Way</span></div><div class="deal-body"><div class="deal-route"><strong>Accra</strong> → <strong>Lagos</strong></div><div class="deal-price">GH₵ 902 <span>/ person</span></div><div class="deal-installment">💳 Pay GH₵ 151/mo · 6 months</div><a href="#" class="deal-book">Book Now</a></div></div>
+      <div class="deal-card"><div class="deal-img"><img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=500&q=70&auto=format" alt="Paris" loading="lazy"/><span class="deal-badge">Round Trip</span></div><div class="deal-body"><div class="deal-route"><strong>Accra</strong> → <strong>Paris</strong></div><div class="deal-price">GH₵ 3,680 <span>/ person</span></div><div class="deal-installment">💳 Pay GH₵ 613/mo · 6 months</div><a href="#" class="deal-book">Book Now</a></div></div>
+    </div>
+
+    <div class="deals-grid deal-panel" data-deals="hotels" style="display:none">
+      <div class="deal-card"><div class="deal-img"><img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=500&q=70&auto=format" alt="Dubai hotel" loading="lazy"/><span class="deal-badge">5-Star</span></div><div class="deal-body"><div class="deal-route"><strong>Atlantis The Palm</strong> — Dubai</div><div class="deal-price">GH₵ 1,100 <span>/ night</span></div><div class="deal-installment">⭐⭐⭐⭐⭐ · Free Breakfast</div><a href="#" class="deal-book">Book Now</a></div></div>
+      <div class="deal-card"><div class="deal-img"><img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=500&q=70&auto=format" alt="London hotel" loading="lazy"/><span class="deal-badge">4-Star</span></div><div class="deal-body"><div class="deal-route"><strong>The Savoy</strong> — London</div><div class="deal-price">GH₵ 2,300 <span>/ night</span></div><div class="deal-installment">⭐⭐⭐⭐ · Central Location</div><a href="#" class="deal-book">Book Now</a></div></div>
+      <div class="deal-card"><div class="deal-img"><img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=500&q=70&auto=format" alt="Paris hotel" loading="lazy"/><span class="deal-badge">5-Star</span></div><div class="deal-body"><div class="deal-route"><strong>Le Bristol</strong> — Paris</div><div class="deal-price">GH₵ 1,950 <span>/ night</span></div><div class="deal-installment">⭐⭐⭐⭐⭐ · Near Champs-Élysées</div><a href="#" class="deal-book">Book Now</a></div></div>
+      <div class="deal-card"><div class="deal-img"><img src="https://images.unsplash.com/photo-1455587734955-081b22074882?w=500&q=70&auto=format" alt="Accra hotel" loading="lazy"/><span class="deal-badge">5-Star</span></div><div class="deal-body"><div class="deal-route"><strong>Kempinski Gold Coast</strong> — Accra</div><div class="deal-price">GH₵ 680 <span>/ night</span></div><div class="deal-installment">⭐⭐⭐⭐⭐ · Pool &amp; Spa</div><a href="#" class="deal-book">Book Now</a></div></div>
+    </div>
+
+    <div class="deals-grid deal-panel" data-deals="packages" style="display:none">
+      <div class="deal-card"><div class="deal-img"><img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=500&q=70&auto=format" alt="Maldives" loading="lazy"/><span class="deal-badge">7 Nights</span></div><div class="deal-body"><div class="deal-route"><strong>Maldives Luxury Escape</strong></div><div class="deal-price">GH₵ 9,200 <span>/ couple</span></div><div class="deal-installment">✈️ Flight + 🏨 Resort + 🍽️ All-Inclusive</div><a href="#" class="deal-book">Book Now</a></div></div>
+      <div class="deal-card"><div class="deal-img"><img src="https://images.unsplash.com/photo-1612138021769-64b50dc5a1d2?w=500&q=70&auto=format" alt="Safari" loading="lazy"/><span class="deal-badge">5 Nights</span></div><div class="deal-body"><div class="deal-route"><strong>Kenya Safari Adventure</strong></div><div class="deal-price">GH₵ 6,500 <span>/ person</span></div><div class="deal-installment">✈️ Flight + 🏕️ Lodge + 🦁 Game Drives</div><a href="#" class="deal-book">Book Now</a></div></div>
+      <div class="deal-card"><div class="deal-img"><img src="https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=500&q=70&auto=format" alt="Turkey" loading="lazy"/><span class="deal-badge">10 Nights</span></div><div class="deal-body"><div class="deal-route"><strong>Turkey &amp; Istanbul</strong></div><div class="deal-price">GH₵ 5,800 <span>/ person</span></div><div class="deal-installment">✈️ Flight + 🏨 Hotel + 🎭 City Tour</div><a href="#" class="deal-book">Book Now</a></div></div>
+      <div class="deal-card"><div class="deal-img"><img src="https://images.unsplash.com/photo-1554931670-4ebfabf6e7a9?w=500&q=70&auto=format" alt="Thailand" loading="lazy"/><span class="deal-badge">8 Nights</span></div><div class="deal-body"><div class="deal-route"><strong>Thailand Beach Holiday</strong></div><div class="deal-price">GH₵ 7,100 <span>/ person</span></div><div class="deal-installment">✈️ Flight + 🏨 Resort + 🛥️ Island Tour</div><a href="#" class="deal-book">Book Now</a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRENDING DESTINATIONS -->
+<section class="destinations-section">
+  <div class="container">
+    <h2 class="section-title">Trending Destinations</h2>
+    <p class="section-sub">Popular spots among NextStop travellers right now</p>
+    <div class="dest-grid">
+      <div class="dest-card"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=400&q=70&auto=format" alt="Dubai" loading="lazy"/><div class="dest-card-body"><h3>Dubai, UAE</h3><p>City of wonders</p><div class="from-price">From GH₵ 1,517</div></div></div>
+      <div class="dest-card"><img src="https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=400&q=70&auto=format" alt="London" loading="lazy"/><div class="dest-card-body"><h3>London, UK</h3><p>Classic &amp; timeless</p><div class="from-price">From GH₵ 4,250</div></div></div>
+      <div class="dest-card"><img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=400&q=70&auto=format" alt="Paris" loading="lazy"/><div class="dest-card-body"><h3>Paris, France</h3><p>City of light &amp; love</p><div class="from-price">From GH₵ 3,680</div></div></div>
+      <div class="dest-card"><img src="https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=400&q=70&auto=format" alt="Istanbul" loading="lazy"/><div class="dest-card-body"><h3>Istanbul, Turkey</h3><p>Where East meets West</p><div class="from-price">From GH₵ 2,900</div></div></div>
+      <div class="dest-card"><img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&q=70&auto=format" alt="Cape Town" loading="lazy"/><div class="dest-card-body"><h3>Cape Town, SA</h3><p>Breathtaking scenery</p><div class="from-price">From GH₵ 1,800</div></div></div>
+      <div class="dest-card"><img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=400&q=70&auto=format" alt="New York" loading="lazy"/><div class="dest-card-body"><h3>New York, USA</h3><p>The city that never sleeps</p><div class="from-price">From GH₵ 5,400</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- VISA CTA BANNER -->
+<section style="background:var(--navy);padding:52px 0">
+  <div class="container" style="text-align:center">
+    <div style="font-size:2.5rem;margin-bottom:12px">🛂</div>
+    <h2 style="color:#fff;font-size:1.8rem;font-weight:800;margin-bottom:10px">Need Help with Your Visa?</h2>
+    <p style="color:#a8c4e8;max-width:560px;margin:0 auto 24px;font-size:1rem">From tourist visas to student permits — our experts guide you through every step. Book a consultation today for just <strong style="color:var(--cyan)">$50</strong>.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a href="visa.html" class="btn btn-gold" style="padding:13px 32px;font-size:1rem">Book Visa Consultation →</a>
+      <a href="visa.html#student" class="btn btn-ghost" style="padding:13px 32px;font-size:1rem">Student Visa Help</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY NEXTSTOP -->
+<section class="why-section">
+  <div class="container">
+    <h2 class="section-title">Why Travel with NextStop?</h2>
+    <p class="section-sub">Africa's leading travel platform — powered by Royal Accent Creations</p>
+    <div class="why-grid">
+      <div class="why-card"><div class="icon" style="background:#fffbeb">💰</div><h4>Best Price Guarantee</h4><p>We search hundreds of airlines and hotels to find you the lowest possible fares, guaranteed.</p></div>
+      <div class="why-card"><div class="icon" style="background:#eff6ff">🔒</div><h4>Secure Booking</h4><p>Your payments and personal data are protected with bank-level SSL encryption at all times.</p></div>
+      <div class="why-card"><div class="icon" style="background:#f0fdf4">📦</div><h4>Flexible Payments</h4><p>Pay in installments with zero interest. Lock in today's price and pay over 3 to 12 months.</p></div>
+      <div class="why-card"><div class="icon" style="background:#fdf4ff">🛎️</div><h4>24/7 Support</h4><p>Our travel experts are on hand around the clock to assist with any booking or travel issue.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- APP SECTION -->
+<section class="app-section">
+  <div class="container">
+    <div class="app-inner">
+      <div class="app-text">
+        <h2>Get the NextStop App</h2>
+        <p>Book flights, hotels and holiday packages on the go. Get exclusive app-only deals and manage all your bookings from one place.</p>
+        <form class="app-email-row" id="appEmailForm">
+          <input type="email" id="appEmail" placeholder="Enter your email address" required/>
+          <button type="submit">Send App Link</button>
+        </form>
+        <div class="app-badges">
+          <a href="#" class="app-badge"><span class="badge-icon">▶</span><div><small>Get it on</small><strong>Google Play</strong></div></a>
+          <a href="#" class="app-badge"><span class="badge-icon">🍎</span><div><small>Available on the</small><strong>App Store</strong></div></a>
+        </div>
+      </div>
+      <div class="app-phones">
+        <img src="https://images.unsplash.com/photo-1512054502232-10a0a035d672?w=300&q=70&auto=format" alt="NextStop App" style="border-radius:20px;box-shadow:0 30px 80px rgba(0,0,0,.5)"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter-section">
+  <div class="container">
+    <div class="newsletter-inner">
+      <div class="newsletter-text">
+        <h2>🎯 Don't Miss a Great Deal</h2>
+        <p>Stay one step ahead. Subscribe for the latest deals, travel tips and inspiration.</p>
+      </div>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" id="newsletterEmail" placeholder="Enter your email address" required/>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-logo">Next<span>Stop</span></span>
+        <span class="footer-powered">Powered by Royal Accent Creations</span>
+        <p>Africa's one-stop travel booking platform — flights, hotels, rides, visa services and holiday packages at the best prices.</p>
+        <div class="footer-socials">
+          <div class="social-link">f</div>
+          <div class="social-link">𝕏</div>
+          <div class="social-link">📸</div>
+          <div class="social-link">in</div>
+          <div class="social-link">▶</div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Our Services</h4>
+        <a href="#">✈️ Flights</a>
+        <a href="#">🏨 Hotels &amp; Stays</a>
+        <a href="#">🚗 Airport Rides</a>
+        <a href="#">🌴 Holiday Packages</a>
+        <a href="visa.html">🛂 Visa Services</a>
+        <a href="#">💳 Travel Card</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About NextStop</a>
+        <a href="#">Royal Accent Creations</a>
+        <a href="#">Careers</a>
+        <a href="#">Press &amp; Media</a>
+        <a href="#">Affiliate Program</a>
+        <a href="#">Contact Us</a>
+      </div>
+      <div class="footer-col">
+        <h4>Visa Services</h4>
+        <a href="visa.html">General Visa Consultation</a>
+        <a href="visa.html#student">Student Visa — Europe</a>
+        <a href="visa.html#student">Student Visa — UK</a>
+        <a href="visa.html#student">Student Visa — Canada</a>
+        <a href="visa.html#student">Student Visa — USA</a>
+        <a href="mailto:info@theroyalaccentcreations.com">info@theroyalaccentcreations.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 NextStop · Powered by Royal Accent Creations. All rights reserved.</span>
+      <div class="footer-bottom-right">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- CITY MODAL -->
+<div class="modal-overlay" id="cityModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>Select City or Airport</h3>
+      <button class="modal-close" id="modalClose">✕</button>
+    </div>
+    <input type="text" class="modal-search-input" id="citySearch" placeholder="Search city, airport or country…"/>
+    <div class="city-list" id="cityList"></div>
+  </div>
+</div>
+
+<!-- CURRENCY CONVERTER WIDGET -->
+<div class="currency-fab">
+  <button class="currency-fab-btn" id="currencyFab" title="Currency Converter">💱</button>
+  <span class="currency-fab-label">Currency Converter</span>
+</div>
+
+<div class="currency-panel" id="currencyPanel">
+  <div class="cp-header">
+    <h3>💱 Currency Converter</h3>
+    <button class="cp-close" id="cpClose">✕</button>
+  </div>
+  <div class="cp-body">
+    <div class="cp-amount-row">
+      <input type="number" id="cpAmount" value="1" min="0" step="any"/>
+    </div>
+    <div class="cp-selects">
+      <select class="cp-select" id="cpFrom"></select>
+      <button class="cp-swap" id="cpSwap">⇄</button>
+      <select class="cp-select" id="cpTo"></select>
+    </div>
+    <div class="cp-result">
+      <div class="cp-result-amount" id="cpResult">—</div>
+      <div class="cp-result-rate" id="cpRate"></div>
+    </div>
+    <div class="cp-updated" id="cpUpdated"></div>
+    <div class="cp-popular">
+      <h4>Quick Rates (from selected currency)</h4>
+      <div class="cp-popular-grid" id="cpPopularGrid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
