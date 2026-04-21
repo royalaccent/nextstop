@@ -8,7 +8,7 @@
  * paste your deployment URL below (replace the placeholder string).
  * Leave as-is and the WhatsApp flow still works — sheet logging is bonus.
  */
-const APPS_SCRIPT_URL = 'YOUR_DEPLOYMENT_URL';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx6AQcUIFPM4XjtCET0qXO6KyZa9xLWqxKGsYaH3Bovj2uXuMoxQ_inu0sCLVYRKR7-/exec';
 
 document.addEventListener('DOMContentLoaded', () => {
 
