@@ -16,9 +16,9 @@
 <div class="top-bar">
   <div class="container">
     <div class="top-bar-links">
-      <a href="#">List Your Property</a>
-      <a href="#">NextStop Biz Travel</a>
-      <a href="#">Manage My Bookings</a>
+      <a href="https://wa.me/233244416725?text=Hi%2C%20I%20want%20to%20list%20my%20property%20on%20NextStop" target="_blank">List Your Property</a>
+      <a href="https://wa.me/233244416725?text=Hi%2C%20I%27m%20interested%20in%20NextStop%20Biz%20Travel" target="_blank">NextStop Biz Travel</a>
+      <a href="https://wa.me/233244416725?text=Hi%2C%20I%20need%20help%20managing%20my%20booking" target="_blank">Manage My Bookings</a>
     </div>
     <div class="top-bar-right">
       <span class="powered-by-top">Powered by Royal Accent Creations</span>
@@ -43,23 +43,23 @@
       <li class="nav-item">
         <button>Shop Travel ▾</button>
         <div class="dropdown">
-          <a href="#">✈️ Flights</a>
-          <a href="#">🏨 Hotels &amp; Stays</a>
-          <a href="#">🚗 Airport Rides</a>
-          <a href="#">🌴 Holiday Packages</a>
-          <a href="#">🎫 Events</a>
-          <a href="#">💳 Travel Card</a>
+          <a href="#search-section" onclick="if(window.nextstopGoTo)nextstopGoTo('flight')">✈️ Flights</a>
+          <a href="#search-section" onclick="if(window.nextstopGoTo)nextstopGoTo('stays')">🏨 Hotels &amp; Stays</a>
+          <a href="#search-section" onclick="if(window.nextstopGoTo)nextstopGoTo('rides')">🚗 Airport Rides</a>
+          <a href="#search-section" onclick="if(window.nextstopGoTo)nextstopGoTo('holidays')">🌴 Holiday Packages</a>
+          <a href="#search-section" onclick="if(window.nextstopGoTo)nextstopGoTo('events')">🎫 Events</a>
+          <a href="#search-section" onclick="if(window.nextstopGoTo)nextstopGoTo('card')">💳 Travel Card</a>
         </div>
       </li>
       <li class="nav-item"><a href="visa.html">🛂 Visa Services</a></li>
-      <li class="nav-item"><a href="#">List Property</a></li>
-      <li class="nav-item"><a href="#">Biz Travel</a></li>
-      <li class="nav-item"><a href="#">Travel Guide</a></li>
+      <li class="nav-item"><a href="https://wa.me/233244416725?text=Hi%2C%20I%20want%20to%20list%20my%20property%20on%20NextStop" target="_blank">List Property</a></li>
+      <li class="nav-item"><a href="https://wa.me/233244416725?text=Hi%2C%20I%27m%20interested%20in%20NextStop%20Biz%20Travel" target="_blank">Biz Travel</a></li>
+      <li class="nav-item"><a href="https://blog.wakanow.com" target="_blank">Travel Guide</a></li>
     </ul>
 
     <div class="nav-actions">
-      <a href="#" class="btn btn-ghost">🛒 Cart</a>
-      <a href="#" class="btn btn-gold">Login / Sign Up</a>
+      <a href="#" class="btn btn-ghost" id="cartBtn">🛒 Cart</a>
+      <a href="https://wa.me/233244416725?text=Hi%2C%20I%27d%20like%20to%20create%20a%20NextStop%20account" target="_blank" class="btn btn-gold">Login / Sign Up</a>
       <button class="hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -74,19 +74,19 @@
     <button class="mobile-nav-close" id="mobileNavClose">✕</button>
     <a href="index.html"><strong>Next<span style="color:var(--cyan)">Stop</span></strong></a>
     <div class="mobile-divider"></div>
-    <a href="#">✈️ Flights</a>
-    <a href="#">🏨 Hotels &amp; Stays</a>
-    <a href="#">🚗 Airport Rides</a>
-    <a href="#">🌴 Holiday Packages</a>
-    <a href="#">🎫 Events</a>
-    <a href="#">💳 Travel Card</a>
+    <a href="#search-section" onclick="if(window.nextstopGoTo)nextstopGoTo('flight')">✈️ Flights</a>
+    <a href="#search-section" onclick="if(window.nextstopGoTo)nextstopGoTo('stays')">🏨 Hotels &amp; Stays</a>
+    <a href="#search-section" onclick="if(window.nextstopGoTo)nextstopGoTo('rides')">🚗 Airport Rides</a>
+    <a href="#search-section" onclick="if(window.nextstopGoTo)nextstopGoTo('holidays')">🌴 Holiday Packages</a>
+    <a href="#search-section" onclick="if(window.nextstopGoTo)nextstopGoTo('events')">🎫 Events</a>
+    <a href="#search-section" onclick="if(window.nextstopGoTo)nextstopGoTo('card')">💳 Travel Card</a>
     <div class="mobile-divider"></div>
     <a href="visa.html">🛂 Visa Services</a>
-    <a href="#">List Property</a>
-    <a href="#">Biz Travel</a>
-    <a href="#">Travel Guide</a>
+    <a href="https://wa.me/233244416725?text=Hi%2C%20I%20want%20to%20list%20my%20property%20on%20NextStop" target="_blank">List Property</a>
+    <a href="https://wa.me/233244416725?text=Hi%2C%20I%27m%20interested%20in%20NextStop%20Biz%20Travel" target="_blank">Biz Travel</a>
+    <a href="https://blog.wakanow.com" target="_blank">Travel Guide</a>
     <div class="mobile-divider"></div>
-    <a href="#" style="color:var(--cyan);font-weight:700">Login / Sign Up</a>
+    <a href="https://wa.me/233244416725?text=Hi%2C%20I%27d%20like%20to%20create%20a%20NextStop%20account" target="_blank" style="color:var(--cyan);font-weight:700">Login / Sign Up</a>
   </div>
 </div>
 
@@ -98,7 +98,7 @@
     <p class="hero-sub">✦ Powered by Royal Accent Creations ✦</p>
   </div>
 
-  <div class="search-card container" style="position:relative">
+  <div class="search-card container" id="search-section" style="position:relative">
     <!-- Tabs -->
     <div class="search-tabs">
       <button class="search-tab active" data-panel="flight">
@@ -157,8 +157,8 @@
             <div class="dp-header">
               <h4 id="dpTitle">April 2026</h4>
               <div class="dp-nav">
-                <button id="dpPrev">&#8249;</button>
-                <button id="dpNext">&#8250;</button>
+                <button id="dpPrev">‹</button>
+                <button id="dpNext">›</button>
               </div>
             </div>
             <div class="dp-grid" id="dpGrid"></div>
@@ -178,25 +178,25 @@
               <div style="display:flex;align-items:center;justify-content:space-between">
                 <div><div style="font-weight:600;font-size:.9rem">Adults</div><div style="font-size:.74rem;color:var(--muted)">12+ years</div></div>
                 <div style="display:flex;align-items:center;gap:12px">
-                  <button class="pax-btn" data-type="adults" data-op="-">&#8722;</button>
+                  <button class="pax-btn" data-type="adults" data-op="-" style="width:28px;height:28px;border-radius:50%;border:1.5px solid var(--border);background:#fff;font-size:1rem;display:flex;align-items:center;justify-content:center">−</button>
                   <span id="pax-adults" style="font-weight:700;font-size:1rem;min-width:16px;text-align:center">1</span>
-                  <button class="pax-btn" data-type="adults" data-op="+">+</button>
+                  <button class="pax-btn" data-type="adults" data-op="+" style="width:28px;height:28px;border-radius:50%;border:1.5px solid var(--border);background:#fff;font-size:1rem;display:flex;align-items:center;justify-content:center">+</button>
                 </div>
               </div>
               <div style="display:flex;align-items:center;justify-content:space-between">
-                <div><div style="font-weight:600;font-size:.9rem">Children</div><div style="font-size:.74rem;color:var(--muted)">2-11 years</div></div>
+                <div><div style="font-weight:600;font-size:.9rem">Children</div><div style="font-size:.74rem;color:var(--muted)">2–11 years</div></div>
                 <div style="display:flex;align-items:center;gap:12px">
-                  <button class="pax-btn" data-type="children" data-op="-">&#8722;</button>
+                  <button class="pax-btn" data-type="children" data-op="-" style="width:28px;height:28px;border-radius:50%;border:1.5px solid var(--border);background:#fff;font-size:1rem;display:flex;align-items:center;justify-content:center">−</button>
                   <span id="pax-children" style="font-weight:700;font-size:1rem;min-width:16px;text-align:center">0</span>
-                  <button class="pax-btn" data-type="children" data-op="+">+</button>
+                  <button class="pax-btn" data-type="children" data-op="+" style="width:28px;height:28px;border-radius:50%;border:1.5px solid var(--border);background:#fff;font-size:1rem;display:flex;align-items:center;justify-content:center">+</button>
                 </div>
               </div>
               <div style="display:flex;align-items:center;justify-content:space-between">
                 <div><div style="font-weight:600;font-size:.9rem">Infants</div><div style="font-size:.74rem;color:var(--muted)">Under 2 years</div></div>
                 <div style="display:flex;align-items:center;gap:12px">
-                  <button class="pax-btn" data-type="infants" data-op="-">&#8722;</button>
+                  <button class="pax-btn" data-type="infants" data-op="-" style="width:28px;height:28px;border-radius:50%;border:1.5px solid var(--border);background:#fff;font-size:1rem;display:flex;align-items:center;justify-content:center">−</button>
                   <span id="pax-infants" style="font-weight:700;font-size:1rem;min-width:16px;text-align:center">0</span>
-                  <button class="pax-btn" data-type="infants" data-op="+">+</button>
+                  <button class="pax-btn" data-type="infants" data-op="+" style="width:28px;height:28px;border-radius:50%;border:1.5px solid var(--border);background:#fff;font-size:1rem;display:flex;align-items:center;justify-content:center">+</button>
                 </div>
               </div>
             </div>
@@ -258,7 +258,7 @@
         <div style="font-size:2.4rem;margin-bottom:10px">💳</div>
         <h3 style="margin-bottom:8px;color:var(--navy)">NextStop Travel Card</h3>
         <p style="color:var(--muted);max-width:500px;margin:0 auto 20px;font-size:.9rem">Get a prepaid travel card loaded with your budget. Spend in any currency with zero foreign transaction fees.</p>
-        <a href="#" class="btn btn-gold" style="display:inline-flex">Get Your Travel Card →</a>
+        <a href="https://wa.me/233244416725?text=Hi%2C%20I%27m%20interested%20in%20the%20NextStop%20Travel%20Card" target="_blank" class="btn btn-gold" style="display:inline-flex">Get Your Travel Card →</a>
       </div>
     </div>
   </div>
@@ -291,7 +291,7 @@
         <div class="promo-card-body">
           <h3>From Africa to the World</h3>
           <p>Fly RwandAir, Ethiopian Airlines &amp; more — amazing fares, every day.</p>
-          <a href="#" class="promo-btn">Book Now</a>
+          <a href="https://wa.me/233244416725?text=Hi%2C%20I%27d%20like%20to%20book%20a%20flight%20across%20Africa" target="_blank" class="promo-btn">Book Now</a>
         </div>
       </div>
       <div class="promo-stack">
@@ -300,7 +300,7 @@
           <div class="promo-card-body">
             <h3>Paris from Accra 🗼</h3>
             <p>From GH₵ 4,500 — Limited seats.</p>
-            <a href="#" class="promo-btn">Book Now</a>
+            <a href="https://wa.me/233244416725?text=Hi%2C%20I%27d%20like%20to%20book%20the%20Paris%20from%20Accra%20deal%20from%20GH%E2%82%B54%2C500" target="_blank" class="promo-btn">Book Now</a>
           </div>
         </div>
         <div class="promo-card">
@@ -308,7 +308,7 @@
           <div class="promo-card-body">
             <h3>Dubai Getaway 🏙️</h3>
             <p>Flights + 5-star hotel from GH₵ 6,200.</p>
-            <a href="#" class="promo-btn">Book Now</a>
+            <a href="https://wa.me/233244416725?text=Hi%2C%20I%27d%20like%20to%20book%20the%20Dubai%20Getaway%20deal%20from%20GH%E2%82%B56%2C200" target="_blank" class="promo-btn">Book Now</a>
           </div>
         </div>
       </div>
@@ -330,7 +330,7 @@
           <button class="offer-tab" data-deals="hotels">Hotels</button>
           <button class="offer-tab" data-deals="packages">Packages</button>
         </div>
-        <a href="#" class="view-all">View all →</a>
+        <a href="https://www.wakanow.com.gh/flights" target="_blank" class="view-all">View all →</a>
       </div>
     </div>
 
@@ -352,7 +352,7 @@
       <div class="deal-card"><div class="deal-img"><img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=500&q=70&auto=format" alt="Maldives" loading="lazy"/><span class="deal-badge">7 Nights</span></div><div class="deal-body"><div class="deal-route"><strong>Maldives Luxury Escape</strong></div><div class="deal-price">GH₵ 9,200 <span>/ couple</span></div><div class="deal-installment">✈️ Flight + 🏨 Resort + 🍽️ All-Inclusive</div><a href="#" class="deal-book">Book Now</a></div></div>
       <div class="deal-card"><div class="deal-img"><img src="https://images.unsplash.com/photo-1612138021769-64b50dc5a1d2?w=500&q=70&auto=format" alt="Safari" loading="lazy"/><span class="deal-badge">5 Nights</span></div><div class="deal-body"><div class="deal-route"><strong>Kenya Safari Adventure</strong></div><div class="deal-price">GH₵ 6,500 <span>/ person</span></div><div class="deal-installment">✈️ Flight + 🏕️ Lodge + 🦁 Game Drives</div><a href="#" class="deal-book">Book Now</a></div></div>
       <div class="deal-card"><div class="deal-img"><img src="https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=500&q=70&auto=format" alt="Turkey" loading="lazy"/><span class="deal-badge">10 Nights</span></div><div class="deal-body"><div class="deal-route"><strong>Turkey &amp; Istanbul</strong></div><div class="deal-price">GH₵ 5,800 <span>/ person</span></div><div class="deal-installment">✈️ Flight + 🏨 Hotel + 🎭 City Tour</div><a href="#" class="deal-book">Book Now</a></div></div>
-      <div class="deal-card"><div class="deal-img"><img src="https://images.unsplash.com/photo-1554931670-4ebfabf6e7a9?w=500&q=70&auto=format" alt="Thailand" loading="lazy"/><span class="deal-badge">8 Nights</span></div><div class="deal-body"><div class="deal-route"><strong>Thailand Beach Holiday</strong></div><div class="deal-price">GH₵ 7,100 <span>/ person</span></div><div class="deal-installment">✈️ Flight + 🏨 Resort + 🛥️ Island Tour</div><a href="#" class="deal-book">Book Now</a></div></div>
+      <div class="deal-card"><div class="deal-img"><img src="https://images.unsplash.com/photo-1554931670-4ebfabf6e7a9?w=500&q=70&auto=format" alt="Thailand" loading="lazy"/><span class="deal-badge">8 Nights</span></div><div class="deal-body"><div class="deal-route"><strong>Thailand Beach Holiday</strong></div><div class="deal-price">GH₵ 7,100 <span>/ person</span></div><div class="deal-installment">✈️ Flight + 🏨 Resort + 🚥 Island Tour</div><a href="#" class="deal-book">Book Now</a></div></div>
     </div>
   </div>
 </section>
@@ -384,10 +384,7 @@
       <a href="visa.html#student" class="btn btn-ghost" style="padding:13px 32px;font-size:1rem">Student Visa Help</a>
     </div>
   </div>
-</section>
-
-<!-- WHY NEXTSTOP -->
-<section class="why-section">
+</section>="why-section">
   <div class="container">
     <h2 class="section-title">Why Travel with NextStop?</h2>
     <p class="section-sub">Africa's leading travel platform — powered by Royal Accent Creations</p>
@@ -412,8 +409,8 @@
           <button type="submit">Send App Link</button>
         </form>
         <div class="app-badges">
-          <a href="#" class="app-badge"><span class="badge-icon">▶</span><div><small>Get it on</small><strong>Google Play</strong></div></a>
-          <a href="#" class="app-badge"><span class="badge-icon">🍎</span><div><small>Available on the</small><strong>App Store</strong></div></a>
+          <a href="https://wa.me/233244416725?text=Hi%2C%20send%20me%20the%20NextStop%20Android%20app%20link" target="_blank" class="app-badge"><span class="badge-icon">▶</span><div><small>Get it on</small><strong>Google Play</strong></div></a>
+          <a href="https://wa.me/233244416725?text=Hi%2C%20send%20me%20the%20NextStop%20iOS%20app%20link" target="_blank" class="app-badge"><span class="badge-icon">🍎</span><div><small>Available on the</small><strong>App Store</strong></div></a>
         </div>
       </div>
       <div class="app-phones">
@@ -448,11 +445,11 @@
         <span class="footer-powered">Powered by Royal Accent Creations</span>
         <p>Africa's one-stop travel booking platform — flights, hotels, rides, visa services and holiday packages at the best prices.</p>
         <div class="footer-socials">
-          <div class="social-link">f</div>
-          <div class="social-link">𝕏</div>
-          <div class="social-link">📸</div>
-          <div class="social-link">in</div>
-          <div class="social-link">▶</div>
+          <a href="https://web.facebook.com" target="_blank" class="social-link">f</a>
+          <a href="https://x.com" target="_blank" class="social-link">𝕏</a>
+          <a href="https://instagram.com" target="_blank" class="social-link">📸</a>
+          <a href="https://linkedin.com" target="_blank" class="social-link">in</a>
+          <a href="https://youtube.com" target="_blank" class="social-link">▶</a>
         </div>
       </div>
       <div class="footer-col">
@@ -466,12 +463,12 @@
       </div>
       <div class="footer-col">
         <h4>Company</h4>
-        <a href="#">About NextStop</a>
-        <a href="#">Royal Accent Creations</a>
-        <a href="#">Careers</a>
-        <a href="#">Press &amp; Media</a>
-        <a href="#">Affiliate Program</a>
-        <a href="#">Contact Us</a>
+        <a href="https://wa.me/233244416725?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20NextStop" target="_blank">About NextStop</a>
+        <a href="mailto:info@theroyalaccentcreations.com">Royal Accent Creations</a>
+        <a href="mailto:info@theroyalaccentcreations.com?subject=Careers%20at%20NextStop">Careers</a>
+        <a href="mailto:info@theroyalaccentcreations.com?subject=Press%20%26%20Media%20Enquiry">Press &amp; Media</a>
+        <a href="https://wa.me/233244416725?text=Hi%2C%20I%27m%20interested%20in%20the%20NextStop%20Affiliate%20Program" target="_blank">Affiliate Program</a>
+        <a href="mailto:info@theroyalaccentcreations.com">Contact Us</a>
       </div>
       <div class="footer-col">
         <h4>Visa Services</h4>
