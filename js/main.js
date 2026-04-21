@@ -7,7 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const qs  = (s, c=document) => c.querySelector(s);
   const qsa = (s, c=document) => [...c.querySelectorAll(s)];
 
-  /* SERVICE TABS */
+  /* =========================================
+     SERVICE TABS
+     ========================================= */
   qsa('.search-tab').forEach(tab => {
     tab.addEventListener('click', () => {
       qsa('.search-tab').forEach(t => t.classList.remove('active'));
@@ -17,7 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* OFFER TABS */
+  /* =========================================
+     OFFER TABS
+     ========================================= */
   qsa('.offer-tab').forEach(tab => {
     tab.addEventListener('click', () => {
       qsa('.offer-tab').forEach(t => t.classList.remove('active'));
@@ -27,14 +31,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* CITY PICKER MODAL */
+  /* =========================================
+     CITY PICKER MODAL
+     ========================================= */
   const CITIES = [
     { name:'Accra',       code:'ACC', country:'Ghana',           icon:'🇬🇭' },
     { name:'Kumasi',      code:'KMS', country:'Ghana',           icon:'🇬🇭' },
     { name:'Lagos',       code:'LOS', country:'Nigeria',         icon:'🇳🇬' },
     { name:'Abuja',       code:'ABV', country:'Nigeria',         icon:'🇳🇬' },
     { name:'Nairobi',     code:'NBO', country:'Kenya',           icon:'🇰🇪' },
-    { name:'Abidjan',     code:'ABJ', country:"Cote d'Ivoire",   icon:'🇨🇮' },
+    { name:'Abidjan',     code:'ABJ', country:"Côte d'Ivoire", icon:'🇨🇮' },
     { name:'Dakar',       code:'DKR', country:'Senegal',         icon:'🇸🇳' },
     { name:'London',      code:'LHR', country:'United Kingdom',  icon:'🇬🇧' },
     { name:'Manchester',  code:'MAN', country:'United Kingdom',  icon:'🇬🇧' },
@@ -66,14 +72,12 @@ document.addEventListener('DOMContentLoaded', () => {
       c.country.toLowerCase().includes(q.toLowerCase())
     );
     if (!cityList) return;
-    cityList.innerHTML = filtered.map(c => `
-      <div class="city-item" data-name="${c.name}" data-code="${c.code}">
-        <span class="city-icon">${c.icon}</span>
-        <div>
-          <div class="city-item-name">${c.name} <span class="city-item-code">${c.code}</span></div>
-          <div style="font-size:.74rem;color:var(--muted)">${c.country}</div>
-        </div>
-      </div>`).join('');
+    cityList.innerHTML = filtered.map(c =>
+      '<div class="city-item" data-name="' + c.name + '" data-code="' + c.code + '">' +
+      '<span class="city-icon">' + c.icon + '</span>' +
+      '<div><div class="city-item-name">' + c.name + ' <span class="city-item-code">' + c.code + '</span></div>' +
+      '<div style="font-size:.74rem;color:var(--muted)">' + c.country + '</div></div></div>'
+    ).join('');
     qsa('.city-item', cityList).forEach(item => {
       item.addEventListener('click', () => {
         if (activeField === 'from') fromDisplay.textContent = item.dataset.name;
@@ -84,21 +88,23 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function openModal(field) { activeField=field; citySearch.value=''; renderCities(); modal.classList.add('open'); setTimeout(()=>citySearch.focus(),80); }
-  function closeModal() { modal?.classList.remove('open'); }
+  function closeModal() { modal && modal.classList.remove('open'); }
 
-  qs('#fromField')?.addEventListener('click', () => openModal('from'));
-  qs('#toField')?.addEventListener('click',   () => openModal('to'));
-  modalClose?.addEventListener('click', closeModal);
-  modal?.addEventListener('click', e => { if(e.target===modal) closeModal(); });
-  citySearch?.addEventListener('input', e => renderCities(e.target.value));
-  qs('#swapBtn')?.addEventListener('click', () => {
+  qs('#fromField') && qs('#fromField').addEventListener('click', () => openModal('from'));
+  qs('#toField')   && qs('#toField').addEventListener('click',   () => openModal('to'));
+  modalClose && modalClose.addEventListener('click', closeModal);
+  modal && modal.addEventListener('click', e => { if(e.target===modal) closeModal(); });
+  citySearch && citySearch.addEventListener('input', e => renderCities(e.target.value));
+  qs('#swapBtn') && qs('#swapBtn').addEventListener('click', () => {
     if (!fromDisplay || !toDisplay) return;
     const tmp = fromDisplay.textContent;
     fromDisplay.textContent = toDisplay.textContent;
     toDisplay.textContent = tmp;
   });
 
-  /* DATE PICKER */
+  /* =========================================
+     DATE PICKER
+     ========================================= */
   const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   const WDAYS  = ['Su','Mo','Tu','We','Th','Fr','Sa'];
   let dpTarget=null, selectedDep=null, selectedRet=null;
@@ -107,18 +113,18 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderCal() {
     const title=qs('#dpTitle'); const grid=qs('#dpGrid');
     if(!title||!grid) return;
-    title.textContent=`${MONTHS[dpMonth]} ${dpYear}`;
+    title.textContent=MONTHS[dpMonth]+' '+dpYear;
     const first=new Date(dpYear,dpMonth,1).getDay();
     const days=new Date(dpYear,dpMonth+1,0).getDate();
     const today=new Date();
-    let html=WDAYS.map(d=>`<div class="dp-day-name">${d}</div>`).join('');
+    let html=WDAYS.map(d=>'<div class="dp-day-name">'+d+'</div>').join('');
     for(let i=0;i<first;i++) html+='<div></div>';
     for(let d=1;d<=days;d++){
       const dt=new Date(dpYear,dpMonth,d);
       const past=dt<new Date(today.getFullYear(),today.getMonth(),today.getDate());
       const tod=d===today.getDate()&&dpMonth===today.getMonth()&&dpYear===today.getFullYear();
       const sel=(selectedDep&&sameDay(dt,selectedDep))||(selectedRet&&sameDay(dt,selectedRet));
-      html+=`<div class="dp-day${past?' disabled':''}${tod?' today':''}${sel?' selected':''}" data-date="${dt.toISOString()}">${d}</div>`;
+      html+='<div class="dp-day'+(past?' disabled':'')+(tod?' today':'')+(sel?' selected':'')+'" data-date="'+dt.toISOString()+'">'+d+'</div>';
     }
     grid.innerHTML=html;
     qsa('.dp-day:not(.disabled)',grid).forEach(el=>{
@@ -133,29 +139,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function updateDateField(valId, subId, d) {
     const v=qs('#'+valId); const s=qs('#'+subId);
-    if(v) v.textContent=`${d.getDate()} ${d.toLocaleDateString('en-US',{month:'short'})}'${String(d.getFullYear()).slice(2)}`;
+    if(v) v.textContent=d.getDate()+' '+d.toLocaleDateString('en-US',{month:'short'})+"'"+String(d.getFullYear()).slice(2);
     if(s) s.textContent=d.toLocaleDateString('en-US',{weekday:'long'});
   }
   function sameDay(a,b){return a.getDate()===b.getDate()&&a.getMonth()===b.getMonth()&&a.getFullYear()===b.getFullYear();}
   function openDatePanel(target){dpTarget=target; const p=qs('#datePanel'); if(!p)return; p.style.display='block'; p.classList.add('open'); renderCal();}
   function closeDatePanel(){const p=qs('#datePanel'); if(p){p.classList.remove('open'); setTimeout(()=>p.style.display='none',10);}}
-  qs('#depDateField')?.addEventListener('click', e=>{e.stopPropagation(); openDatePanel('dep');});
-  qs('#retDateField')?.addEventListener('click', e=>{e.stopPropagation(); openDatePanel('ret');});
-  qs('#dpPrev')?.addEventListener('click',()=>{dpMonth--;if(dpMonth<0){dpMonth=11;dpYear--;} renderCal();});
-  qs('#dpNext')?.addEventListener('click',()=>{dpMonth++;if(dpMonth>11){dpMonth=0;dpYear++;} renderCal();});
+  qs('#depDateField') && qs('#depDateField').addEventListener('click', e=>{e.stopPropagation(); openDatePanel('dep');});
+  qs('#retDateField') && qs('#retDateField').addEventListener('click', e=>{e.stopPropagation(); openDatePanel('ret');});
+  qs('#dpPrev') && qs('#dpPrev').addEventListener('click',()=>{dpMonth--;if(dpMonth<0){dpMonth=11;dpYear--;} renderCal();});
+  qs('#dpNext') && qs('#dpNext').addEventListener('click',()=>{dpMonth++;if(dpMonth>11){dpMonth=0;dpYear++;} renderCal();});
   document.addEventListener('click', e=>{
     const dp=qs('#datePanel');
     if(dp&&!dp.contains(e.target)&&e.target!==qs('#depDateField')&&e.target!==qs('#retDateField')) closeDatePanel();
   });
 
-  /* PASSENGER COUNTER */
+  /* =========================================
+     PASSENGER COUNTER
+     ========================================= */
   const paxField=qs('#passengerField'), paxPanel=qs('#passengerPanel');
   let passengers={adults:1,children:0,infants:0};
   function updatePaxDisplay(){
     const t=passengers.adults+passengers.children+passengers.infants;
-    const el=qs('#passengerCount'); if(el) el.textContent=`${t} Passenger${t!==1?'s':''}`;
+    const el=qs('#passengerCount'); if(el) el.textContent=t+' Passenger'+(t!==1?'s':'');
   }
-  paxField?.addEventListener('click', e=>{
+  paxField && paxField.addEventListener('click', e=>{
     e.stopPropagation(); if(!paxPanel)return;
     paxPanel.classList.toggle('open');
     paxPanel.style.display=paxPanel.classList.contains('open')?'block':'none';
@@ -165,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const t=btn.dataset.type, op=btn.dataset.op;
       if(op==='+') passengers[t]++;
       else{if(t==='adults'&&passengers[t]<=1)return; if(passengers[t]<=0)return; passengers[t]--;}
-      const el=qs(`#pax-${t}`); if(el) el.textContent=passengers[t];
+      const el=qs('#pax-'+t); if(el) el.textContent=passengers[t];
       updatePaxDisplay();
     });
   });
@@ -175,29 +183,50 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  /* SEARCH BUTTON */
-  qs('#searchBtn')?.addEventListener('click', () => {
-    const f=qs('#fromCity')?.textContent, t=qs('#toCity')?.textContent;
+  /* =========================================
+     SEARCH BUTTON
+     ========================================= */
+  qs('#searchBtn') && qs('#searchBtn').addEventListener('click', () => {
+    const f=qs('#fromCity') && qs('#fromCity').textContent;
+    const t=qs('#toCity') && qs('#toCity').textContent;
     if(!f||f==='Select City'||!t||t==='Select City'){showToast('Please select departure and destination cities'); return;}
-    showToast(`Searching flights from ${f} to ${t}...`);
+    showToast('Finding flights from '+f+' to '+t+'…');
+    const url='https://www.wakanow.com.gh/flights?from='+encodeURIComponent(f)+'&to='+encodeURIComponent(t);
+    setTimeout(function(){window.open(url,'_blank');},800);
   });
 
-  /* MOBILE NAV */
-  qs('#hamburger')?.addEventListener('click',()=>qs('#mobileNav')?.classList.add('open'));
-  qs('#mobileNavClose')?.addEventListener('click',()=>qs('#mobileNav')?.classList.remove('open'));
-  qs('#mobileNavOverlay')?.addEventListener('click',()=>qs('#mobileNav')?.classList.remove('open'));
+  /* =========================================
+     MOBILE NAV
+     ========================================= */
+  qs('#hamburger') && qs('#hamburger').addEventListener('click',()=>qs('#mobileNav') && qs('#mobileNav').classList.add('open'));
+  qs('#mobileNavClose') && qs('#mobileNavClose').addEventListener('click',()=>qs('#mobileNav') && qs('#mobileNav').classList.remove('open'));
+  qs('#mobileNavOverlay') && qs('#mobileNavOverlay').addEventListener('click',()=>qs('#mobileNav') && qs('#mobileNav').classList.remove('open'));
 
-  /* NAVBAR SCROLL */
-  window.addEventListener('scroll',()=>qs('.navbar')?.classList.toggle('scrolled',window.scrollY>10));
+  /* =========================================
+     NAVBAR SCROLL SHADOW
+     ========================================= */
+  window.addEventListener('scroll',()=>qs('.navbar') && qs('.navbar').classList.toggle('scrolled',window.scrollY>10));
 
-  /* FORMS */
-  qs('#newsletterForm')?.addEventListener('submit',e=>{e.preventDefault(); showToast('Subscribed! Great deals incoming.'); const el=qs('#newsletterEmail'); if(el)el.value='';});
-  qs('#appEmailForm')?.addEventListener('submit',e=>{e.preventDefault(); showToast('App link sent to your email!'); const el=qs('#appEmail'); if(el)el.value='';});
+  /* =========================================
+     FORMS
+     ========================================= */
+  qs('#newsletterForm') && qs('#newsletterForm').addEventListener('submit',e=>{e.preventDefault(); showToast('🎉 Subscribed! Great deals incoming.'); const el=qs('#newsletterEmail'); if(el)el.value='';});
+  qs('#appEmailForm') && qs('#appEmailForm').addEventListener('submit',e=>{e.preventDefault(); showToast('📱 App link sent to your email!'); const el=qs('#appEmail'); if(el)el.value='';});
 
-  /* BOOK NOW BUTTONS */
-  qsa('.deal-book').forEach(btn=>btn.addEventListener('click',e=>{e.preventDefault(); showToast('Redirecting to booking...');}));
+  /* =========================================
+     BOOK NOW BUTTONS
+     ========================================= */
+  qsa('.deal-book').forEach(btn=>btn.addEventListener('click',e=>{
+    e.preventDefault();
+    const route=(btn.closest('.deal-body') && btn.closest('.deal-body').querySelector('.deal-route') && btn.closest('.deal-body').querySelector('.deal-route').textContent.trim())||'this deal';
+    const price=(btn.closest('.deal-body') && btn.closest('.deal-body').querySelector('.deal-price') && btn.closest('.deal-body').querySelector('.deal-price').textContent.trim())||'';
+    const msg=encodeURIComponent("Hi, I'd like to book: "+route+" — "+price+". Please help!");
+    window.open('https://wa.me/233244416725?text='+msg,'_blank');
+  }));
 
-  /* SCROLL ANIMATIONS */
+  /* =========================================
+     SCROLL ANIMATIONS
+     ========================================= */
   const obs=new IntersectionObserver(entries=>{
     entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1'; e.target.style.transform='translateY(0)';}});
   },{threshold:0.1});
@@ -206,35 +235,40 @@ document.addEventListener('DOMContentLoaded', () => {
     obs.observe(el);
   });
 
-  /* TOAST */
-  function showToast(msg, dur=3200){
+  /* =========================================
+     TOAST
+     ========================================= */
+  function showToast(msg, dur){
+    dur = dur || 3200;
     const t=qs('#toast'); if(!t)return;
     t.textContent=msg; t.classList.add('show');
     setTimeout(()=>t.classList.remove('show'),dur);
   }
   window.showToast=showToast;
 
-  /* CURRENCY CONVERTER */
+  /* =========================================
+     CURRENCY CONVERTER
+     ========================================= */
   const CURRENCIES = {
-    USD:{name:'US Dollar',flag:'🇺🇸',symbol:'$'},
-    GHS:{name:'Ghanaian Cedi',flag:'🇬🇭',symbol:'GH₵'},
-    EUR:{name:'Euro',flag:'🇪🇺',symbol:'€'},
-    GBP:{name:'British Pound',flag:'🇬🇧',symbol:'£'},
+    USD:{name:'US Dollar',      flag:'🇺🇸',symbol:'$'},
+    GHS:{name:'Ghanaian Cedi',  flag:'🇬🇭',symbol:'₵'},
+    EUR:{name:'Euro',           flag:'🇪🇺',symbol:'€'},
+    GBP:{name:'British Pound',  flag:'🇬🇧',symbol:'£'},
     CAD:{name:'Canadian Dollar',flag:'🇨🇦',symbol:'$'},
     AUD:{name:'Australian Dollar',flag:'🇦🇺',symbol:'$'},
-    NGN:{name:'Nigerian Naira',flag:'🇳🇬',symbol:'₦'},
+    NGN:{name:'Nigerian Naira', flag:'🇳🇬',symbol:'₦'},
     KES:{name:'Kenyan Shilling',flag:'🇰🇪',symbol:'KSh'},
-    ZAR:{name:'S.A. Rand',flag:'🇿🇦',symbol:'R'},
-    AED:{name:'UAE Dirham',flag:'🇦🇪',symbol:'AED'},
-    XOF:{name:'CFA Franc',flag:'🌍',symbol:'CFA'},
-    JPY:{name:'Japanese Yen',flag:'🇯🇵',symbol:'¥'},
-    CNY:{name:'Chinese Yuan',flag:'🇨🇳',symbol:'¥'},
-    CHF:{name:'Swiss Franc',flag:'🇨🇭',symbol:'Fr'},
-    INR:{name:'Indian Rupee',flag:'🇮🇳',symbol:'₹'},
-    SEK:{name:'Swedish Krona',flag:'🇸🇪',symbol:'kr'},
+    ZAR:{name:'S.A. Rand',      flag:'🇿🇦',symbol:'R'},
+    AED:{name:'UAE Dirham',     flag:'🇦🇪',symbol:'د.إ'},
+    XOF:{name:'CFA Franc',      flag:'🌍',symbol:'₣'},
+    JPY:{name:'Japanese Yen',   flag:'🇯🇵',symbol:'¥'},
+    CNY:{name:'Chinese Yuan',   flag:'🇨🇳',symbol:'¥'},
+    CHF:{name:'Swiss Franc',    flag:'🇨🇭',symbol:'Fr'},
+    INR:{name:'Indian Rupee',   flag:'🇮🇳',symbol:'₹'},
+    SEK:{name:'Swedish Krona',  flag:'🇸🇪',symbol:'kr'},
     SGD:{name:'Singapore Dollar',flag:'🇸🇬',symbol:'$'},
     NOK:{name:'Norwegian Krone',flag:'🇳🇴',symbol:'kr'},
-    DKK:{name:'Danish Krone',flag:'🇩🇰',symbol:'kr'},
+    DKK:{name:'Danish Krone',   flag:'🇩🇰',symbol:'kr'},
     MYR:{name:'Malaysian Ringgit',flag:'🇲🇾',symbol:'RM'},
   };
 
@@ -245,8 +279,8 @@ document.addEventListener('DOMContentLoaded', () => {
     DKK:6.87, MYR:4.72,
   };
 
-  let rates = { ...STATIC_RATES };
-  let ratesUpdated = 'Static rates (deploy with API key for live rates)';
+  let rates = Object.assign({}, STATIC_RATES);
+  let ratesUpdated = 'Static rates';
 
   async function fetchRates() {
     try {
@@ -256,17 +290,19 @@ document.addEventListener('DOMContentLoaded', () => {
       if (data.rates) {
         Object.keys(CURRENCIES).forEach(c => { if(data.rates[c]) rates[c]=data.rates[c]; });
         const d=new Date(data.time_last_update_utc||Date.now());
-        ratesUpdated = `Live - Updated ${d.toLocaleDateString('en-US',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'})}`;
+        ratesUpdated = 'Live · Updated '+d.toLocaleDateString('en-US',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
         updateCurrencyResult();
       }
-    } catch(_) {}
+    } catch(err) {}
   }
 
   function populateCurrencySelects() {
     const fromSel=qs('#cpFrom'), toSel=qs('#cpTo');
     if(!fromSel||!toSel) return;
-    const opts=Object.entries(CURRENCIES).map(([code,c])=>
-      `<option value="${code}">${c.flag} ${code} - ${c.name}</option>`).join('');
+    const opts=Object.entries(CURRENCIES).map(function(pair){
+      const code=pair[0], c=pair[1];
+      return '<option value="'+code+'">'+c.flag+' '+code+' — '+c.name+'</option>';
+    }).join('');
     fromSel.innerHTML=opts; toSel.innerHTML=opts;
     fromSel.value='USD'; toSel.value='GHS';
   }
@@ -280,24 +316,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const usd=amt/rates[from];
     const result=usd*rates[to];
     const cc=CURRENCIES[to]||{};
-    resEl.textContent=`${cc.symbol||''}${result.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})} ${to}`;
+    resEl.textContent=(cc.symbol||'')+result.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})+' '+to;
     const rate=(rates[to]/rates[from]);
-    if(rateEl) rateEl.innerHTML=`1 ${from} = <span>${rate.toLocaleString('en-US',{maximumFractionDigits:4})}</span> ${to}`;
+    if(rateEl) rateEl.innerHTML='1 '+from+' = <span>'+rate.toLocaleString('en-US',{maximumFractionDigits:4})+'</span> '+to;
     if(updEl) updEl.textContent=ratesUpdated;
     updatePopularRates(from);
   }
 
-  function updatePopularRates(from='USD') {
+  function updatePopularRates(from) {
+    from = from || 'USD';
     const grid=qs('#cpPopularGrid'); if(!grid) return;
     const pops=['GHS','EUR','GBP','NGN','AED','CAD'].filter(c=>c!==from).slice(0,6);
     grid.innerHTML=pops.map(c=>{
       const rate=(rates[c]/rates[from]);
       const cc=CURRENCIES[c]||{};
-      return `<div class="cp-pop-item" data-to="${c}">
-        <span class="flag">${cc.flag}</span>
-        <span class="rate">${rate.toLocaleString('en-US',{maximumFractionDigits:3})}</span>
-        <span class="code">${c}</span>
-      </div>`;
+      return '<div class="cp-pop-item" data-to="'+c+'">'+
+        '<span class="flag">'+cc.flag+'</span>'+
+        '<span class="rate">'+rate.toLocaleString('en-US',{maximumFractionDigits:3})+'</span>'+
+        '<span class="code">'+c+'</span></div>';
     }).join('');
     qsa('.cp-pop-item',grid).forEach(el=>{
       el.addEventListener('click',()=>{
@@ -306,24 +342,77 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  qs('#currencyFab')?.addEventListener('click',()=>{
+  qs('#currencyFab') && qs('#currencyFab').addEventListener('click',()=>{
     const panel=qs('#currencyPanel');
-    panel?.classList.toggle('open');
-    if(panel?.classList.contains('open')){populateCurrencySelects(); fetchRates(); updateCurrencyResult();}
+    if(!panel) return;
+    panel.classList.toggle('open');
+    if(panel.classList.contains('open')){populateCurrencySelects(); fetchRates(); updateCurrencyResult();}
   });
-  qs('#cpClose')?.addEventListener('click',()=>qs('#currencyPanel')?.classList.remove('open'));
+  qs('#cpClose') && qs('#cpClose').addEventListener('click',()=>qs('#currencyPanel') && qs('#currencyPanel').classList.remove('open'));
 
   ['#cpFrom','#cpTo','#cpAmount'].forEach(id=>{
-    qs(id)?.addEventListener('input',updateCurrencyResult);
-    qs(id)?.addEventListener('change',updateCurrencyResult);
+    qs(id) && qs(id).addEventListener('input',updateCurrencyResult);
+    qs(id) && qs(id).addEventListener('change',updateCurrencyResult);
   });
 
-  qs('#cpSwap')?.addEventListener('click',()=>{
+  qs('#cpSwap') && qs('#cpSwap').addEventListener('click',()=>{
     const f=qs('#cpFrom'),t=qs('#cpTo'); if(!f||!t)return;
     const tmp=f.value; f.value=t.value; t.value=tmp; updateCurrencyResult();
   });
 
   populateCurrencySelects();
   fetchRates();
+
+  /* =========================================
+     NAV TAB SWITCHER (global)
+     ========================================= */
+  window.nextstopGoTo = function(panel) {
+    qsa('.search-tab').forEach(t=>t.classList.toggle('active',t.dataset.panel===panel));
+    qsa('.search-panel').forEach(p=>p.classList.toggle('active',p.dataset.panel===panel));
+    const el=document.getElementById('search-section');
+    if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+    const mn=document.getElementById('mobileNav');
+    if(mn) mn.classList.remove('open');
+  };
+
+  /* =========================================
+     CART BUTTON
+     ========================================= */
+  qs('#cartBtn') && qs('#cartBtn').addEventListener('click',function(e){
+    e.preventDefault();
+    showToast('🛒 Cart coming soon — WhatsApp us to bundle deals!');
+  });
+
+  /* =========================================
+     OTHER SEARCH PANEL BUTTONS
+     ========================================= */
+  const PANEL_URLS={
+    stays:'https://www.wakanow.com.gh/hotels',
+    rides:'https://wa.me/233244416725?text='+encodeURIComponent('Hi, I need to book an airport ride!'),
+    holidays:'https://www.wakanow.com.gh/holiday-packages',
+    events:'https://wa.me/233244416725?text='+encodeURIComponent('Hi, I need help finding events to attend!'),
+    card:'https://wa.me/233244416725?text='+encodeURIComponent("Hi, I'm interested in the NextStop Travel Card!")
+  };
+  qsa('.search-panel').forEach(function(panel){
+    if(panel.dataset.panel==='flight') return;
+    const btn=panel.querySelector('.search-btn');
+    if(btn) btn.addEventListener('click',function(){
+      const url=PANEL_URLS[panel.dataset.panel];
+      if(url) window.open(url,'_blank');
+    });
+  });
+
+  /* =========================================
+     DESTINATION CARDS
+     ========================================= */
+  qsa('.dest-card').forEach(card=>{
+    card.style.cursor='pointer';
+    card.addEventListener('click',()=>{
+      const dest=(card.querySelector('h3') && card.querySelector('h3').textContent.trim())||'this destination';
+      const price=(card.querySelector('.from-price') && card.querySelector('.from-price').textContent.trim())||'';
+      const msg=encodeURIComponent("Hi, I'd like to book a trip to "+dest+" ("+price+"). Please help!");
+      window.open('https://wa.me/233244416725?text='+msg,'_blank');
+    });
+  });
 
 });
