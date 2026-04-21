@@ -2,6 +2,14 @@
    NEXTSTOP — Main JavaScript
    ========================================= */
 
+/**
+ * APPS SCRIPT INTEGRATION
+ * After deploying nextstop-booking.gs as a Google Apps Script Web App,
+ * paste your deployment URL below (replace the placeholder string).
+ * Leave as-is and the WhatsApp flow still works — sheet logging is bonus.
+ */
+const APPS_SCRIPT_URL = 'YOUR_DEPLOYMENT_URL';
+
 document.addEventListener('DOMContentLoaded', () => {
 
   const qs  = (s, c=document) => c.querySelector(s);
@@ -44,9 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
     { name:'Dakar',        code:'DKR', country:'Senegal',         icon:'🇸🇳' },
     { name:'London',       code:'LHR', country:'United Kingdom',  icon:'🇬🇧' },
     { name:'Manchester',   code:'MAN', country:'United Kingdom',  icon:'🇬🇧' },
-    { name:'Dubai',        code:'DXB', country:'UAE',             icon:'🇦🇪' },
+    { name:'Dubai',        code:'DXB', country:'UAE',             icon:'🆦🇪' },
     { name:'New York',     code:'JFK', country:'USA',             icon:'🇺🇸' },
-    { name:'Toronto',      code:'YYZ', country:'Canada',          icon:'🇨🇦' },
+    { name:'Toronto',      code:'YYZ', country:'Canada',          icon:'🇨🆦' },
     { name:'Paris',        code:'CDG', country:'France',          icon:'🇫🇷' },
     { name:'Frankfurt',    code:'FRA', country:'Germany',         icon:'🇩🇪' },
     { name:'Amsterdam',    code:'AMS', country:'Netherlands',     icon:'🇳🇱' },
@@ -267,6 +275,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
 _Sent via NextStop · Royal Accent Creations_`;
 
+    // ── Log to Google Sheet (Apps Script) — silent fail ──────
+    if (APPS_SCRIPT_URL && APPS_SCRIPT_URL !== 'YOUR_DEPLOYMENT_URL') {
+      fetch(APPS_SCRIPT_URL, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          service:     service,
+          from:        from,
+          destination: country,
+          departure:   dep,
+          returnDate:  ret  || '',
+          travellers:  pax,
+          transit:     transit,
+          name:        name,
+          email:       email,
+          phone:       phone,
+          notes:       notes || ''
+        })
+      }).catch(() => {}); // Never block the WhatsApp flow
+    }
+    // ─────────────────────────────────────────────────────────
+
     window.open('https://wa.me/233244416725?text=' + encodeURIComponent(msg), '_blank');
     closeBookingModal();
     showToast("📩 Enquiry sent! We'll get back to you shortly.");
@@ -295,7 +325,7 @@ _Sent via NextStop · Royal Accent Creations_`;
 
   /* =========================================
      MOBILE NAV
-========================================= */
+     ========================================= */
   qs('#hamburger')?.addEventListener('click', () => qs('#mobileNav')?.classList.add('open'));
   qs('#mobileNavClose')?.addEventListener('click', () => qs('#mobileNav')?.classList.remove('open'));
   qs('#mobileNavOverlay')?.addEventListener('click', () => qs('#mobileNav')?.classList.remove('open'));
@@ -368,11 +398,11 @@ _Sent via NextStop · Royal Accent Creations_`;
     EUR:{name:'Euro',              flag:'🇪🇺', symbol:'€'},
     GBP:{name:'British Pound',     flag:'🇬🇧', symbol:'£'},
     CAD:{name:'Canadian Dollar',   flag:'🇨🇦', symbol:'$'},
-    AUD:{name:'Australian Dollar', flag:'🇦🇺', symbol:'$'},
+    AUD:{name:'Australian Dollar', flag:'🆦🇺', symbol:'$'},
     NGN:{name:'Nigerian Naira',    flag:'🇳🇬', symbol:'₦'},
     KES:{name:'Kenyan Shilling',   flag:'🇰🇪', symbol:'KSh'},
     ZAR:{name:'S.A. Rand',         flag:'🇿🇦', symbol:'R'},
-    AED:{name:'UAE Dirham',        flag:'🇦🇪', symbol:'د.إ'},
+    AED:{name:'UAE Dirham',        flag:'🆦🇪', symbol:'د.إ'},
     XOF:{name:'CFA Franc',         flag:'🌍',   symbol:'₣'},
     JPY:{name:'Japanese Yen',      flag:'🇯🇵', symbol:'¥'},
     CNY:{name:'Chinese Yuan',      flag:'🇨🇳', symbol:'¥'},
