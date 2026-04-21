@@ -9,6 +9,23 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    /* ---- Booking Enquiry Modal ---- */
+    .booking-modal-box{max-width:640px;width:calc(100% - 32px);max-height:90vh;overflow-y:auto}
+    .booking-form{padding:2px 2px 4px}
+    .bk-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
+    .bk-field{display:flex;flex-direction:column;gap:6px}
+    .bk-field label{font-size:.8rem;font-weight:600;color:var(--navy)}
+    .bk-field input,.bk-field select{padding:10px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:.9rem;font-family:inherit;color:var(--navy);outline:none;transition:border-color .2s;background:#fafafa}
+    .bk-field input:focus,.bk-field select:focus{border-color:var(--cyan);background:#fff}
+    .bk-req{color:var(--gold)}
+    .bk-divider{height:1px;background:var(--border);margin:2px 0 16px}
+    .booking-submit-btn{width:100%;padding:14px;background:var(--gold);color:var(--navy);border:none;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;margin-top:6px;transition:opacity .2s,transform .1s;font-family:inherit}
+    .booking-submit-btn:hover{opacity:.88;transform:translateY(-1px)}
+    .booking-submit-btn:active{transform:translateY(0)}
+    .bk-modal-sub{font-size:.8rem;color:var(--muted);margin:3px 0 0}
+    @media(max-width:560px){.bk-row{grid-template-columns:1fr;gap:12px}.booking-modal-box{max-height:95vh}}
+  </style>
 </head>
 <body>
 
@@ -54,7 +71,7 @@
       <li class="nav-item"><a href="visa.html">🛂 Visa Services</a></li>
       <li class="nav-item"><a href="https://wa.me/233244416725?text=Hi%2C%20I%20want%20to%20list%20my%20property%20on%20NextStop" target="_blank">List Property</a></li>
       <li class="nav-item"><a href="https://wa.me/233244416725?text=Hi%2C%20I%27m%20interested%20in%20NextStop%20Biz%20Travel" target="_blank">Biz Travel</a></li>
-      <li class="nav-item"><a href="https://blog.wakanow.com" target="_blank">Travel Guide</a></li>
+      <li class="nav-item"><a href="#" onclick="if(window.openBookingModal)openBookingModal({title:'📩 Travel Enquiry'}); return false;">Enquire Now</a></li>
     </ul>
 
     <div class="nav-actions">
@@ -84,7 +101,7 @@
     <a href="visa.html">🛂 Visa Services</a>
     <a href="https://wa.me/233244416725?text=Hi%2C%20I%20want%20to%20list%20my%20property%20on%20NextStop" target="_blank">List Property</a>
     <a href="https://wa.me/233244416725?text=Hi%2C%20I%27m%20interested%20in%20NextStop%20Biz%20Travel" target="_blank">Biz Travel</a>
-    <a href="https://blog.wakanow.com" target="_blank">Travel Guide</a>
+    <a href="#" onclick="if(window.openBookingModal)openBookingModal({title:'📩 Travel Enquiry'}); document.getElementById('mobileNav').classList.remove('open'); return false;">Enquire Now</a>
     <div class="mobile-divider"></div>
     <a href="https://wa.me/233244416725?text=Hi%2C%20I%27d%20like%20to%20create%20a%20NextStop%20account" target="_blank" style="color:var(--cyan);font-weight:700">Login / Sign Up</a>
   </div>
@@ -330,7 +347,7 @@
           <button class="offer-tab" data-deals="hotels">Hotels</button>
           <button class="offer-tab" data-deals="packages">Packages</button>
         </div>
-        <a href="https://www.wakanow.com.gh/flights" target="_blank" class="view-all">View all →</a>
+        <a href="#" onclick="if(window.openBookingModal)openBookingModal({service:'Flight',title:'✈️ Book a Flight'}); return false;" class="view-all">View all →</a>
       </div>
     </div>
 
@@ -352,7 +369,7 @@
       <div class="deal-card"><div class="deal-img"><img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=500&q=70&auto=format" alt="Maldives" loading="lazy"/><span class="deal-badge">7 Nights</span></div><div class="deal-body"><div class="deal-route"><strong>Maldives Luxury Escape</strong></div><div class="deal-price">GH₵ 9,200 <span>/ couple</span></div><div class="deal-installment">✈️ Flight + 🏨 Resort + 🍽️ All-Inclusive</div><a href="#" class="deal-book">Book Now</a></div></div>
       <div class="deal-card"><div class="deal-img"><img src="https://images.unsplash.com/photo-1612138021769-64b50dc5a1d2?w=500&q=70&auto=format" alt="Safari" loading="lazy"/><span class="deal-badge">5 Nights</span></div><div class="deal-body"><div class="deal-route"><strong>Kenya Safari Adventure</strong></div><div class="deal-price">GH₵ 6,500 <span>/ person</span></div><div class="deal-installment">✈️ Flight + 🏕️ Lodge + 🦁 Game Drives</div><a href="#" class="deal-book">Book Now</a></div></div>
       <div class="deal-card"><div class="deal-img"><img src="https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=500&q=70&auto=format" alt="Turkey" loading="lazy"/><span class="deal-badge">10 Nights</span></div><div class="deal-body"><div class="deal-route"><strong>Turkey &amp; Istanbul</strong></div><div class="deal-price">GH₵ 5,800 <span>/ person</span></div><div class="deal-installment">✈️ Flight + 🏨 Hotel + 🎭 City Tour</div><a href="#" class="deal-book">Book Now</a></div></div>
-      <div class="deal-card"><div class="deal-img"><img src="https://images.unsplash.com/photo-1554931670-4ebfabf6e7a9?w=500&q=70&auto=format" alt="Thailand" loading="lazy"/><span class="deal-badge">8 Nights</span></div><div class="deal-body"><div class="deal-route"><strong>Thailand Beach Holiday</strong></div><div class="deal-price">GH₵ 7,100 <span>/ person</span></div><div class="deal-installment">✈️ Flight + 🏨 Resort + 🚥 Island Tour</div><a href="#" class="deal-book">Book Now</a></div></div>
+      <div class="deal-card"><div class="deal-img"><img src="https://images.unsplash.com/photo-1554931670-4ebfabf6e7a9?w=500&q=70&auto=format" alt="Thailand" loading="lazy"/><span class="deal-badge">8 Nights</span></div><div class="deal-body"><div class="deal-route"><strong>Thailand Beach Holiday</strong></div><div class="deal-price">GH₵ 7,100 <span>/ person</span></div><div class="deal-installment">✈️ Flight + 🏨 Resort + 🛥️ Island Tour</div><a href="#" class="deal-book">Book Now</a></div></div>
     </div>
   </div>
 </section>
@@ -384,7 +401,10 @@
       <a href="visa.html#student" class="btn btn-ghost" style="padding:13px 32px;font-size:1rem">Student Visa Help</a>
     </div>
   </div>
-</section>="why-section">
+</section>
+
+<!-- WHY NEXTSTOP -->
+<section class="why-section">
   <div class="container">
     <h2 class="section-title">Why Travel with NextStop?</h2>
     <p class="section-sub">Africa's leading travel platform — powered by Royal Accent Creations</p>
@@ -490,6 +510,83 @@
     </div>
   </div>
 </footer>
+
+<!-- BOOKING ENQUIRY MODAL -->
+<div class="modal-overlay" id="bookingModal">
+  <div class="modal-box booking-modal-box">
+    <div class="modal-header">
+      <div>
+        <h3 id="bookingModalTitle">✈️ Book Your Trip</h3>
+        <p class="bk-modal-sub">Fill in your details — we'll respond within 24 hours</p>
+      </div>
+      <button class="modal-close" id="bookingModalClose">✕</button>
+    </div>
+    <input type="hidden" id="bkService" value="Flight"/>
+    <form id="bookingForm" class="booking-form" novalidate>
+      <div class="bk-row">
+        <div class="bk-field">
+          <label>Departure City / Airport</label>
+          <input type="text" id="bkFrom" placeholder="e.g. Accra, Ghana"/>
+        </div>
+        <div class="bk-field">
+          <label>Destination Country <span class="bk-req">*</span></label>
+          <input type="text" id="bkCountry" placeholder="e.g. United Kingdom" required/>
+        </div>
+      </div>
+      <div class="bk-row">
+        <div class="bk-field">
+          <label>Date of Travel <span class="bk-req">*</span></label>
+          <input type="date" id="bkDep" required/>
+        </div>
+        <div class="bk-field">
+          <label>Return Date <span style="color:var(--muted);font-weight:400">(optional)</span></label>
+          <input type="date" id="bkRet"/>
+        </div>
+      </div>
+      <div class="bk-row">
+        <div class="bk-field">
+          <label>Number of Travellers <span class="bk-req">*</span></label>
+          <input type="number" id="bkPax" value="1" min="1" max="50" required/>
+        </div>
+        <div class="bk-field">
+          <label>Transit Required?</label>
+          <select id="bkTransit">
+            <option value="Not sure">Not sure</option>
+            <option value="Yes — transit stop needed">Yes — transit stop needed</option>
+            <option value="No — direct flight preferred">No — direct flight preferred</option>
+            <option value="N/A (not a flight booking)">N/A (not a flight booking)</option>
+          </select>
+        </div>
+      </div>
+      <div class="bk-divider"></div>
+      <div class="bk-row">
+        <div class="bk-field">
+          <label>Full Name <span class="bk-req">*</span></label>
+          <input type="text" id="bkName" placeholder="Your full name" required/>
+        </div>
+        <div class="bk-field">
+          <label>Email Address <span class="bk-req">*</span></label>
+          <input type="email" id="bkEmail" placeholder="your@email.com" required/>
+        </div>
+      </div>
+      <div class="bk-row">
+        <div class="bk-field">
+          <label>Phone Number <span class="bk-req">*</span></label>
+          <input type="tel" id="bkPhone" placeholder="+233 XX XXX XXXX" required/>
+        </div>
+        <div class="bk-field">
+          <label>Additional Notes</label>
+          <input type="text" id="bkNotes" placeholder="Special requests, preferences…"/>
+        </div>
+      </div>
+      <button type="submit" class="booking-submit-btn">📩 Send Enquiry via WhatsApp</button>
+      <p style="text-align:center;font-size:.76rem;color:var(--muted);margin-top:10px">
+        We'll respond within 24 hours &nbsp;·&nbsp;
+        <a href="tel:+233244416725" style="color:var(--navy);font-weight:600">☎ +233 24 441 6725</a>
+      </p>
+    </form>
+  </div>
+</div>
 
 <!-- CITY MODAL -->
 <div class="modal-overlay" id="cityModal">
